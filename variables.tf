@@ -3,7 +3,7 @@ variable "name" {
   type        = string
 
   validation {
-    condition     = can(regex("^[a-z][a-z0-9\\-]{2,62}$", var.name))
+    condition     = can(regex("^[a-z][a-z0-9\\-]{3,63}$", var.name))
     error_message = "The resource name must be 3-63 characters long, start with a lowercase letter, and only contain lowercase letters and numbers."
   }
 }
