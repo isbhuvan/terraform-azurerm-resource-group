@@ -1,14 +1,109 @@
+<!-- BEGIN_TF_DOCS -->
+# Azure - Resource Group Module
 
-# Contributing
+## Introduction
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.microsoft.com.
+This module will create a new Resource Group in Azure.
 
-When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+<!-- markdownlist-disable MD033 -->
+## Requirements
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+The following requirements are needed by this module:
+
+- <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) (~> 4.0)
+
+## Providers
+
+The following providers are used by this module:
+
+- <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) (~> 4.0)
+
+## Modules
+
+No modules.
+
+## Resources
+
+The following resources are used by this module:
+
+- [azurerm_resource_group.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) (resource)
+
+<!-- markdownlist-disable MD033 -->
+## Required Inputs
+
+The following input variables are required:
+
+### <a name="input_location"></a> [location](#input\_location)
+
+Description: (Required) The Azure Region where the Resource Group should exist.
+
+Type: `string`
+
+### <a name="input_name"></a> [name](#input\_name)
+
+Description: (Required) The Name which should be used for this Resource Group.
+
+Type: `string`
+
+## Optional Inputs
+
+The following input variables are optional (have default values):
+
+### <a name="input_managed_by"></a> [managed\_by](#input\_managed\_by)
+
+Description: (Optional) The ID of the resource or application that manages this Resource Group.
+
+Type: `string`
+
+Default: `null`
+
+### <a name="input_tags"></a> [tags](#input\_tags)
+
+Description: (Optional) A mapping of tags which should be assigned to the Resource Group.
+
+Type: `map(string)`
+
+Default: `null`
+
+## Outputs
+
+The following outputs are exported:
+
+### <a name="output_id"></a> [id](#output\_id)
+
+Description: Resource group id
+
+### <a name="output_location"></a> [location](#output\_location)
+
+Description: Resource group location
+
+### <a name="output_name"></a> [name](#output\_name)
+
+Description: Resource group name
+
+### <a name="output_rg"></a> [rg](#output\_rg)
+
+Description: Resource group object
+
+## Usage
+
+```terraform
+module "resource_group" {
+  source              = "Azure/resource-group/azurerm"
+  resource_group_name = "rg-dev-demo-01"
+  location            = "westus"
+
+  tags = {
+    environment = "dev"
+    usecase     = "demo"
+  }
+}
+```
+
+## References
+
+| No | URL Link |
+|----|-----------|
+| 1 | [HashiCorp Azurerm Documentation: Resource group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) |
+| 2 | [Microsoft Official Documentation: Resource group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview) |
+<!-- END_TF_DOCS -->

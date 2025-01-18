@@ -1,0 +1,51 @@
+formatter: markdown document
+
+header-from: "docs/.header.md"
+footer-from: "docs/.footer.md"
+
+sections:
+  hide: []
+  show: []
+
+content: |
+  {{ .Header }}
+
+  <!-- markdownlist-disable MD033 -->
+  {{ .Requirements }}
+
+  {{ .Providers }}
+  
+  {{ .Modules }}
+  
+  {{ .Resources }}
+  
+  <!-- markdownlist-disable MD033 -->
+  {{ .Inputs }}
+  
+  {{ .Outputs }}
+  
+  {{ .Footer }}
+
+output:
+  file: README.md
+  mode: replace
+  template: |-
+    <!-- BEGIN_TF_DOCS -->
+    {{ .Content }}
+    <!-- END_TF_DOCS -->
+output_values:
+  enabled: false
+  from: ""
+
+sort:
+  enabled: true
+  type: name
+
+settings:
+  anchor: true
+  color: true
+  indent: 2
+  required: true
+  sensitive: true
+  type: true
+  default: true
